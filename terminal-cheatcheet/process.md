@@ -75,6 +75,20 @@
 | Check persistence mechanisms               | `crontab`, systemd units, Windows services          |
 | Audit what a process is doing              | `lsof`, `strace`, `procmon`                         |
 
+### lsof command examples
+| Tip                                        | Tool                                                |
+| ------------------------------------------ | --------------------------------------------------- |
+| List all Open Files with lsof Command      | lsof                                                |
+| List user specific open files              | lsof -u <username>                                  |
+| Find Processes running on Specific Port    | lsof -i TCP:22                                      |
+| List Only IPv4 & IPv6 Open Files           | lsof -i 4/ lsof -i 6                                |
+| List Open Files of TCP Port ranges 1-1024  | lsof -i TCP:1-1024                                  |
+| Exclude User with ‘^’ Character            | lsof -i -u^root                                     |
+| Find Out who’s Looking What Files and Commands?  | lsof -i -u <username>                         |
+| List all Network Connection                | lsof -i                                             |
+| Search by PID                              | lsof -p 1                                           |
+| Find Out who’s Looking What Files and Commands? | kill -9 `lsof -t -u cyberpunk`                 |
+
 
 
 ###  Quick Tools to Install for Deep Monitoring
@@ -96,8 +110,3 @@ echo "High CPU usage processes:"
 ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head
 ```
 
-**PowerShell Example (Windows)**:
-
-```powershell
-Get-Process | Sort-Object CPU -Descending | Select-Object -First 10
-```
